@@ -54,24 +54,21 @@ class ViewController: UIViewController {
 //        }
         
         if let size = self.fontSizeTextField.text {
-            inputSize = CGFloat(size)!
+            inputSize = CGFloat(Int(size)!)
         }
         
-        let smapleImage = UIColor.orange.image(CGSize(width: inputWidth, height: inputHeight))
+        let sampleImage = UIColor.orange.image(CGSize(width: inputWidth, height: inputHeight))
         
-        self.testUiImageView.image = smapleImage
+        self.testUiImageView.image = self.textToImage(drawText: "Test", inImage: sampleImage, fontSize: inputSize, atPoint: CGPoint(x: inputWidth / 2 , y: inputHeight / 2))
     }
     
     // 사진에 글씨 추가
-    func textToImage(drawText text: String, inImage image: UIImage, atPoint point: CGPoint) -> UIImage {
+    func textToImage(drawText text: String, inImage image: UIImage, fontSize fontSize: CGFloat, atPoint point: CGPoint) -> UIImage {
         // 텍스트 생상
         let textColor = UIColor.white
         // 텍스트 폰트
-        let textFont = UIFont(name: "Helvetica Bold", size: 500)!
+        let textFont = UIFont(name: "Helvetica Bold", size: fontSize)!
 
-        // 뷰 Scale 값
-        let scale = UIScreen.main.scale
-        
         // UIGraphicsBeginImageContextWithOptions
         // - size: bitmap context 사이즈 (= 생성될 이미지의 사이즈)
         // - opaque: 생성될 이미지의 투명도 여부 (투명도가 있으면 true, 단 불투명도일때가 퍼포먼스가 높은 특징 존재)
@@ -98,8 +95,6 @@ class ViewController: UIViewController {
         self.imageSet()
     }
     
-    @IBAction func setFontSizeButtonAction(_ sender: Any) {
-    }
 }
 
 extension UIColor {
