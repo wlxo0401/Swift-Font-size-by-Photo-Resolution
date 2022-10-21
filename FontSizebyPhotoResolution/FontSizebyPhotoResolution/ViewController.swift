@@ -53,9 +53,13 @@ class ViewController: UIViewController {
 //            self.clock.font = self.clock.font.withSize(fontSize)
 //        }
         
-        if let size = self.fontSizeTextField.text {
-            inputSize = CGFloat(Int(size)!)
-        }
+//        if let size = self.fontSizeTextField.text {
+//            inputSize = (inputWidth/inputHeight) * 50
+//
+//        }
+        
+        inputSize = (inputWidth/inputHeight) * 50
+        print("inputSize : ", inputSize)
         
         let sampleImage = UIColor.orange.image(CGSize(width: inputWidth, height: inputHeight))
         
