@@ -27,7 +27,7 @@ ko
 장담 못합니다.
 
 en  
-I can't say.
+I do not know.
 
 
 <p align="center">
