@@ -27,10 +27,10 @@ ko
 en  
 I can't say.
 
-![1](https://github.com/wlxo0401/Swift-Font-size-by-Photo-Resolution/blob/main/screenshot/1.png)
 
-![2](https://github.com/wlxo0401/Swift-Font-size-by-Photo-Resolution/blob/main/screenshot/2.png)
-
-![3](https://github.com/wlxo0401/Swift-Font-size-by-Photo-Resolution/blob/main/screenshot/3.png)
-
-![4](https://github.com/wlxo0401/Swift-Font-size-by-Photo-Resolution/blob/main/screenshot/4.png)
+<p align="center">
+<img src="https://github.com/wlxo0401/Swift-Font-size-by-Photo-Resolution/blob/main/screenshot/1.png" width="20%" height="30%">
+<img src="https://github.com/wlxo0401/Swift-Font-size-by-Photo-Resolution/blob/main/screenshot/2.png" width="20%" height="30%">
+<img src="https://github.com/wlxo0401/Swift-Font-size-by-Photo-Resolution/blob/main/screenshot/3.png" width="20%" height="30%">
+<img src="https://github.com/wlxo0401/Swift-Font-size-by-Photo-Resolution/blob/main/screenshot/4.png" width="20%" height="30%">
+</p>
