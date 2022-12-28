@@ -8,10 +8,12 @@ A test application made to compare the difference in resolution and font size
 
 ## where do you use this?
 ko  
-사진에 숫자를 입력하는 애플리케이션을 만들었습니다. 올바른 글꼴 크기를 찾기 위해 테스트 베드로 사용했습니다.
+사진에 숫자를 입력하는 애플리케이션을 만들었습니다. 텍스트 폰트 사이즈를 정해야했는데 적당한 사이즈를 찾기 위해서 이 어플을 사용해 테스트했습니다.  
+[애플리케이션 다운로드](https://apps.apple.com/kr/app/%EC%82%AC%EC%A7%84%EC%97%90-%EC%88%AB%EC%9E%90-%EC%9E%85%EB%A0%A5/id6443995380)
 
 en  
-I made an application that puts numbers on photos. I used it as a testbed to find the right font size.
+I made an application to input numbers in the picture. I had to determine the size of the text font and used this test bed to find the right size.  
+[Download Application](https://apps.apple.com/kr/app/%EC%82%AC%EC%A7%84%EC%97%90-%EC%88%AB%EC%9E%90-%EC%9E%85%EB%A0%A5/id6443995380)
 
 ## How do I use it?
 ko  
