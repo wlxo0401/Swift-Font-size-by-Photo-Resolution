@@ -6,95 +6,84 @@
 //
 
 import UIKit
+import Photos
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var testUiImageView: UIImageView!
-    
+
     @IBOutlet weak var imageWitdhTextField: UITextField!
-    
     @IBOutlet weak var imageHeightTextField: UITextField!
-    
     
     @IBOutlet weak var fontSizeTextField: UITextField!
     
-    
-    var sampleColorImage: UIImage = UIImage()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
+        self.run()
+    }
+    
+    func run() {
         self.imageSet()
-        
     }
     
     func imageSet() {
+        guard let inputWidth = self.imageWitdhTextField.text,
+                let inputHeight = self.imageHeightTextField.text,
+                let inputFont = self.fontSizeTextField.text else {
+                    return
+                }
         
-        var inputWidth: Double = 0
-        var inputHeight: Double = 0
-        var inputSize: CGFloat = 0
-        
-        if let width = self.imageWitdhTextField.text {
-            inputWidth = Double(width)!
+        if inputWidth == "" || inputHeight == "" || inputFont == "" {
+            return
         }
         
-        if let height = self.imageHeightTextField.text {
-            inputHeight = Double(height)!
+        guard let width = Double(inputWidth),
+           let height = Double(inputHeight),
+           let fontSize = Double(inputFont) else {
+            return
         }
         
+        let sampleImage = UIColor.orange.image(CGSize(width: width, height: height))
         
-        // Set the clock font size according to the height.
-            //  Design was done on iPhone XR with height of 896 points and font size of 98.
-//        if (UIScreen.main.bounds.height != 896). // Only need code if not on original design size.
-//        {
-//            let scaleFactor: Float = Float(UIScreen.main.bounds.height) / 896.0
-//            let fontSize = CGFloat(98.0 * scaleFactor)
-//            self.clock.font = self.clock.font.withSize(fontSize)
-//        }
-        
-        if let size = self.fontSizeTextField.text {
-            inputSize = CGFloat(Int(size)!)
+        if let testImage = self.textToImage(drawText: "Test", inImage: sampleImage, fontSize: fontSize, atPoint: .zero) {
+            self.testUiImageView.image = testImage
         }
-        
-        let sampleImage = UIColor.orange.image(CGSize(width: inputWidth, height: inputHeight))
-        
-        self.testUiImageView.image = self.textToImage(drawText: "Test", inImage: sampleImage, fontSize: inputSize, atPoint: CGPoint(x: inputWidth / 2 , y: inputHeight / 2))
     }
     
     // 사진에 글씨 추가
-    func textToImage(drawText text: String, inImage image: UIImage, fontSize fontSize: CGFloat, atPoint point: CGPoint) -> UIImage {
+    func textToImage(drawText text: String, inImage image: UIImage, fontSize: CGFloat, atPoint point: CGPoint) -> UIImage? {
         // 텍스트 생상
         let textColor = UIColor.white
         // 텍스트 폰트
         let textFont = UIFont(name: "Helvetica Bold", size: fontSize)!
-
-        // UIGraphicsBeginImageContextWithOptions
-        // - size: bitmap context 사이즈 (= 생성될 이미지의 사이즈)
-        // - opaque: 생성될 이미지의 투명도 여부 (투명도가 있으면 true, 단 불투명도일때가 퍼포먼스가 높은 특징 존재)
-        // - scale: 0.0이면 디바이스의 화면에 맞게 이미지가 결정
         UIGraphicsBeginImageContextWithOptions(image.size, false, 1)
-
+        
         let textFontAttributes = [
             NSAttributedString.Key.font: textFont,
             NSAttributedString.Key.foregroundColor: textColor,
             ] as [NSAttributedString.Key : Any]
         
         image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
-
+        
         let rect = CGRect(origin: point, size: image.size)
+        
         text.draw(in: rect, withAttributes: textFontAttributes)
-
+        
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        
         UIGraphicsEndImageContext()
-
-        return newImage!
+        
+        return newImage
     }
 
     @IBAction func setImageSizeButtonAction(_ sender: Any) {
         self.imageSet()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+          self.view.endEditing(true)
+    }
 }
 
 extension UIColor {
